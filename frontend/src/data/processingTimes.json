@@ -1,132 +1,132 @@
 {
-  "generated": "2026-07-17",
-  "total_cases": 718,
+  "generated": "2026-07-27",
+  "total_cases": 717,
   "all": {
     "aor_to_bil": {
       "label": "AOR to Biometrics",
-      "n": 551,
-      "p25": 49,
+      "n": 556,
+      "p25": 51,
       "median": 60,
       "p75": 63
     },
     "aor_to_meds": {
       "label": "AOR to Medical Passed",
-      "n": 520,
-      "p25": 52,
+      "n": 526,
+      "p25": 56,
       "median": 62,
-      "p75": 66
+      "p75": 67
     },
     "aor_to_decision": {
       "label": "AOR to Final Decision",
-      "n": 157,
-      "p25": 96,
-      "median": 109,
-      "p75": 127
+      "n": 166,
+      "p25": 97,
+      "median": 115,
+      "p75": 133
     },
     "aor_to_p1": {
       "label": "AOR to P1 (PR Portal)",
       "n": 121,
-      "p25": 100,
-      "median": 110,
-      "p75": 131
+      "p25": 101,
+      "median": 118,
+      "p75": 137
     },
     "aor_to_ppr": {
       "label": "AOR to PPR / Portal 2",
-      "n": 104,
-      "p25": 107,
-      "median": 122,
-      "p75": 140
+      "n": 109,
+      "p25": 113,
+      "median": 130,
+      "p75": 148
     },
     "aor_to_ecopr": {
       "label": "AOR to eCOPR",
-      "n": 62,
-      "p25": 115,
-      "median": 132,
-      "p75": 146
+      "n": 72,
+      "p25": 122,
+      "median": 138,
+      "p75": 154
     }
   },
   "by_stream": {
     "CEC": {
       "aor_to_bil": {
         "label": "AOR to Biometrics",
-        "n": 397,
-        "p25": 59,
+        "n": 407,
+        "p25": 60,
         "median": 62,
         "p75": 64
       },
       "aor_to_meds": {
         "label": "AOR to Medical Passed",
-        "n": 373,
+        "n": 385,
         "p25": 61,
-        "median": 63,
-        "p75": 68
+        "median": 64,
+        "p75": 69
       },
       "aor_to_decision": {
         "label": "AOR to Final Decision",
-        "n": 111,
-        "p25": 101,
-        "median": 117,
-        "p75": 129
+        "n": 121,
+        "p25": 107,
+        "median": 126,
+        "p75": 135
       },
       "aor_to_p1": {
         "label": "AOR to P1 (PR Portal)",
-        "n": 92,
-        "p25": 103,
-        "median": 115,
-        "p75": 134
+        "n": 95,
+        "p25": 107,
+        "median": 127,
+        "p75": 140
       },
       "aor_to_ppr": {
         "label": "AOR to PPR / Portal 2",
-        "n": 75,
-        "p25": 112,
-        "median": 126,
-        "p75": 144
+        "n": 80,
+        "p25": 118,
+        "median": 136,
+        "p75": 150
       },
       "aor_to_ecopr": {
         "label": "AOR to eCOPR",
-        "n": 46,
-        "p25": 124,
-        "median": 136,
-        "p75": 147
+        "n": 53,
+        "p25": 129,
+        "median": 143,
+        "p75": 156
       }
     },
     "FSW-Outland": {
       "aor_to_bil": {
         "label": "AOR to Biometrics",
-        "n": 74,
-        "p25": 36,
-        "median": 42,
+        "n": 75,
+        "p25": 32,
+        "median": 43,
         "p75": 48
       },
       "aor_to_meds": {
         "label": "AOR to Medical Passed",
-        "n": 71,
-        "p25": 37,
-        "median": 44,
+        "n": 72,
+        "p25": 33,
+        "median": 45,
         "p75": 50
       },
       "aor_to_decision": {
         "label": "AOR to Final Decision",
-        "n": 15,
-        "p25": 62,
-        "median": 69,
-        "p75": 75
+        "n": 13,
+        "p25": 59,
+        "median": 63,
+        "p75": 74
       }
     },
     "PNP-Inland": {
       "aor_to_bil": {
         "label": "AOR to Biometrics",
-        "n": 57,
-        "p25": 26,
-        "median": 29,
-        "p75": 33
+        "n": 51,
+        "p25": 25,
+        "median": 27,
+        "p75": 31
       },
       "aor_to_meds": {
         "label": "AOR to Medical Passed",
-        "n": 54,
-        "p25": 27,
-        "median": 33,
-        "p75": 38
+        "n": 48,
+        "p25": 26,
+        "median": 32,
+        "p75": 35
       },
       "aor_to_decision": {
         "label": "AOR to Final Decision",
@@ -137,38 +137,38 @@
       },
       "aor_to_p1": {
         "label": "AOR to P1 (PR Portal)",
-        "n": 26,
-        "p25": 82,
-        "median": 100,
+        "n": 23,
+        "p25": 97,
+        "median": 101,
         "p75": 109
       },
       "aor_to_ppr": {
         "label": "AOR to PPR / Portal 2",
-        "n": 19,
-        "p25": 91,
-        "median": 116,
-        "p75": 139
+        "n": 20,
+        "p25": 111,
+        "median": 121,
+        "p75": 130
       },
       "aor_to_ecopr": {
         "label": "AOR to eCOPR",
-        "n": 15,
-        "p25": 97,
-        "median": 114,
-        "p75": 122
+        "n": 18,
+        "p25": 114,
+        "median": 125,
+        "p75": 137
       }
     },
     "FSW-Inland": {
       "aor_to_bil": {
         "label": "AOR to Biometrics",
-        "n": 15,
+        "n": 16,
         "p25": 34,
-        "median": 45,
-        "p75": 48
+        "median": 46,
+        "p75": 49
       },
       "aor_to_meds": {
         "label": "AOR to Medical Passed",
         "n": 14,
-        "p25": 32,
+        "p25": 28,
         "median": 45,
         "p75": 56
       }
@@ -176,33 +176,25 @@
   },
   "snapshot": {
     "stages": {
-      "aor": 147,
-      "bil": 32,
-      "medical": 236,
-      "bg_check": 134,
-      "decision": 34,
-      "p1_ppr": 73,
-      "ecopr": 62
+      "aor": 140,
+      "bil": 29,
+      "medical": 248,
+      "bg_check": 122,
+      "decision": 43,
+      "p1_ppr": 63,
+      "ecopr": 72
     },
-    "inland_pct": 71
-  },
-  "adr_impact": {
-    "metric": "aor_to_ppr",
-    "with_median": 131,
-    "without_median": 121,
-    "delta": 10,
-    "n_with": 17,
-    "n_without": 87
+    "inland_pct": 72
   },
   "previous": {
-    "generated": "2026-07-05",
+    "generated": "2026-07-17",
     "medians": {
-      "aor_to_bil": 57,
-      "aor_to_meds": 58,
-      "aor_to_decision": 97,
-      "aor_to_p1": 103,
-      "aor_to_ppr": 110,
-      "aor_to_ecopr": 126
+      "aor_to_bil": 60,
+      "aor_to_meds": 62,
+      "aor_to_decision": 109,
+      "aor_to_p1": 110,
+      "aor_to_ppr": 122,
+      "aor_to_ecopr": 132
     }
   }
 }
