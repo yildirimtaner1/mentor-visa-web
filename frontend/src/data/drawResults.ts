@@ -6,7 +6,7 @@ import rawDraws from './draw_results.json';
 
 export interface DrawResult {
   date: string;
-  drawType: 'General' | 'CEC' | 'PNP' | 'French' | 'Healthcare' | 'STEM' | 'Trades' | 'Transport' | 'Agriculture' | 'Senior Managers' | 'Physicians' | 'Education';
+  drawType: 'General' | 'CEC' | 'PNP' | 'French' | 'Healthcare' | 'STEM' | 'Trades' | 'Transport' | 'Agriculture' | 'Senior Managers' | 'Physicians' | 'Education' | 'Military';
   crsScore: number;
   itasIssued: number;
   notes?: string;
@@ -70,4 +70,5 @@ export const DRAW_TYPE_COLORS: Record<string, string> = {
   'General': '#64748b',
   'Physicians': '#ec4899',
   'Senior Managers': '#14b8a6',
+  'Military': '#0ea5e9',
 };

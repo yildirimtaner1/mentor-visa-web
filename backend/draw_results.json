@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-07-23",
+    "drawType": "Military",
+    "crsScore": 368,
+    "itasIssued": 4,
+    "notes": "Smallest Express Entry round on record — only 4 invitations issued."
+  },
+  {
+    "date": "2026-07-22",
+    "drawType": "French",
+    "crsScore": 399,
+    "itasIssued": 5000,
+    "notes": "French cut-off fell 21 points from the July 9 round."
+  },
+  {
+    "date": "2026-07-21",
+    "drawType": "CEC",
+    "crsScore": 516,
+    "itasIssued": 2000
+  },
+  {
+    "date": "2026-07-20",
+    "drawType": "PNP",
+    "crsScore": 744,
+    "itasIssued": 511
+  },
+  {
     "date": "2026-07-10",
     "drawType": "Senior Managers",
     "crsScore": 392,

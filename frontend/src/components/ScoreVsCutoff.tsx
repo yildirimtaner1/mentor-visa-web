@@ -27,7 +27,8 @@ const DRAW_TYPE_COLORS: Record<string, string> = {
   'Trades': '#f59e0b',
   'Transport': '#d97706',
   'Agriculture': '#16a34a',
-  'PNP': '#0f172a'
+  'PNP': '#0f172a',
+  'Military': '#0ea5e9'
 };
 
 interface ScoreVsCutoffProps {

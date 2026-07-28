@@ -244,7 +244,7 @@ const DRAW_LABELS = {
   CEC: 'Canadian Experience Class', PNP: 'Provincial Nominee Program', French: 'French-Language Proficiency',
   Healthcare: 'Healthcare & Social Services', Trades: 'Trades', Education: 'Education', General: 'No Program Specified',
   Physicians: 'Physicians', 'Senior Managers': 'Senior Managers', STEM: 'STEM', Transport: 'Transport',
-  Agriculture: 'Agriculture & Agri-Food',
+  Agriculture: 'Agriculture & Agri-Food', Military: 'Skilled Military Recruits',
 };
 const fmtDate = (iso) => new Date(iso + 'T00:00:00').toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
 const draws = JSON.parse(readFileSync(join(ROOT, 'src', 'data', 'draw_results.json'), 'utf-8'));

@@ -13,6 +13,7 @@ const DRAW_TYPE_LABELS: Record<string, string> = {
   'General': 'No Program Specified',
   'Physicians': 'Physicians',
   'Senior Managers': 'Senior Managers',
+  'Military': 'Skilled Military Recruits',
 };
 
 const FILTER_OPTIONS = ['All', 'CEC', 'PNP', 'French', 'Healthcare', 'Trades', 'Other'];
