@@ -14,6 +14,7 @@ const DRAW_TYPE_LABELS: Record<string, string> = {
   'Physicians': 'Physicians',
   'Senior Managers': 'Senior Managers',
   'Military': 'Skilled Military Recruits',
+  'Transport': 'Transport Occupations',
 };
 
 const FILTER_OPTIONS = ['All', 'CEC', 'PNP', 'French', 'Healthcare', 'Trades', 'Other'];

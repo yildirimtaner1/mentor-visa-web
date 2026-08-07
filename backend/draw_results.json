@@ -1,5 +1,31 @@
 [
   {
+    "date": "2026-08-07",
+    "drawType": "Transport",
+    "crsScore": 470,
+    "itasIssued": 300,
+    "notes": "First Transport occupations round of 2026 — only the fourth ever."
+  },
+  {
+    "date": "2026-08-06",
+    "drawType": "French",
+    "crsScore": 391,
+    "itasIssued": 5000,
+    "notes": "Lowest French-language cut-off of 2026."
+  },
+  {
+    "date": "2026-08-05",
+    "drawType": "CEC",
+    "crsScore": 516,
+    "itasIssued": 3000
+  },
+  {
+    "date": "2026-08-04",
+    "drawType": "PNP",
+    "crsScore": 768,
+    "itasIssued": 507
+  },
+  {
     "date": "2026-07-23",
     "drawType": "Military",
     "crsScore": 368,

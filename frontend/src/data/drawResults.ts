@@ -71,4 +71,5 @@ export const DRAW_TYPE_COLORS: Record<string, string> = {
   'Physicians': '#ec4899',
   'Senior Managers': '#14b8a6',
   'Military': '#0ea5e9',
+  'Transport': '#d97706',
 };
