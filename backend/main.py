@@ -197,6 +197,54 @@ def dynamic_rate_limit_key(request: Request) -> str:
             pass
     return f"anon:{ip}"
 
+# ── Per-account abuse throttle (Terms of Service s.13 — Acceptable Use / Anti-Abuse) ──────────
+# A single seat used as a commercial service (running our AI tools over many different applicants'
+# documents) gets a hard hourly cap that overrides any tier benefit. Add/remove Clerk user ids via
+# the THROTTLED_USER_IDS env var on Render — comma-separated, no code deploy needed.
+THROTTLED_USER_IDS = {
+    u.strip() for u in os.getenv(
+        "THROTTLED_USER_IDS",
+        # 480 tool runs between 2026-07-12 and 2026-08-07 (~105/day) on one Optimize seat.
+        "user_3GQNLS5lVcNtZbLIck32x9xBo4K",
+    ).split(",") if u.strip()
+}
+THROTTLED_MAX_PER_HOUR = int(os.getenv("THROTTLED_MAX_PER_HOUR", "1"))
+_THROTTLE_MESSAGE = (
+    "You've reached this account's hourly limit. Mentor Visa is licensed for your own permanent-"
+    "residence application — not for running large numbers of other applicants' documents. "
+    "If you need multi-client access, contact info@mentorvisa.com."
+)
+
+
+def enforce_abuse_throttle(user_id: str) -> None:
+    """Hard hourly cap for flagged accounts, counted from the evaluations table.
+
+    Normal users pay nothing for this: the id check short-circuits before any DB work. This backs up
+    the slowapi limit below, which lives in memory per worker and therefore resets on every Render
+    restart — a determined abuser can simply outlast it. Counting saved evaluations instead survives
+    restarts and is shared across workers.
+    """
+    if not user_id or user_id == "anonymous" or user_id not in THROTTLED_USER_IDS:
+        return
+    from sqlalchemy import func
+    db = database.SessionLocal()
+    try:
+        since = datetime.datetime.utcnow() - datetime.timedelta(hours=1)
+        used = db.query(func.count(db_models.Evaluation.id)).filter(
+            db_models.Evaluation.user_id == user_id,
+            db_models.Evaluation.timestamp_utc >= since,
+        ).scalar() or 0
+    except Exception as e:
+        print(f"[throttle] count failed for {user_id} (allowing request): {e}")
+        return
+    finally:
+        db.close()
+    if used >= THROTTLED_MAX_PER_HOUR:
+        print(f"[throttle] BLOCKED {user_id}: {used} run(s) in the last hour "
+              f"(cap {THROTTLED_MAX_PER_HOUR})")
+        raise HTTPException(status_code=429, detail=_THROTTLE_MESSAGE)
+
+
 def dynamic_rate_limit_value(key: str) -> str:
     # Dev mode bypass — don't rate-limit during local development
     if DEV_CACHE_MODE:
@@ -204,6 +252,9 @@ def dynamic_rate_limit_value(key: str) -> str:
     if key.startswith("anon:"):
         return "3/hour"
     parts = key.split(":")
+    # Flagged accounts are capped ahead of any tier benefit (key format: user:<id>:<tier>).
+    if len(parts) >= 2 and parts[1] in THROTTLED_USER_IDS:
+        return f"{THROTTLED_MAX_PER_HOUR}/hour"
     if len(parts) >= 3:
         tier = parts[2]
         if tier in ("starter", "complete"):
@@ -285,6 +336,7 @@ async def analyze_document_endpoint(
     The AI Service auto-detects the NOC code and evaluates the document against the NOC 2021 Source of Truth.
     Saves the original file to disk and injects the file reference into the response.
     """
+    enforce_abuse_throttle(user_id)   # ToS s.13 — flagged accounts capped before any work is done
     filename = document.filename or ""
     ext = os.path.splitext(filename)[1].lower()
     
@@ -660,6 +712,8 @@ def reevaluate_document(
     db: Session = Depends(database.get_db)
 ):
     """Re-runs the AI analysis on an already uploaded document, forcing a specific NOC code."""
+    enforce_abuse_throttle(user_id)   # ToS s.13 — this path re-runs the full pipeline, so it is
+                                      # capped too; otherwise it is a free bypass of the limits above
     ensure_user_exists(user_id, db)
     record = db.query(db_models.Evaluation).filter_by(evaluation_type='audit', stored_file_id=req.file_id).first()
     
@@ -912,6 +966,7 @@ async def noc_finder_endpoint(
     Uses AI to match against all 516 NOC 2021 unit groups and returns the best match with alternatives.
     """
     import json as _json
+    enforce_abuse_throttle(user_id)   # ToS s.13 — flagged accounts capped before any work is done
     evaluation_id = str(uuid.uuid4())
     try:
         ensure_user_exists(user_id, db)
