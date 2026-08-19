@@ -99,16 +99,16 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
 
           {/* Stats Cards */}
           <section className="page-section" style={{ paddingBottom: '0' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+            <div className="draw-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
               
-              <div style={{ padding: '24px', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="draw-stat-card" style={{ padding: '24px', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ width: '40px', height: '4px', background: categoryColor, borderRadius: '4px', marginBottom: '16px' }} />
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Latest {activeCategory} Cutoff</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1E293B', lineHeight: 1 }}>{latestDraw?.crsScore || '—'}</div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--primary-color)', marginTop: '8px', fontWeight: 500 }}>{latestDraw ? formatDate(latestDraw.date) : ''}</div>
               </div>
 
-              <div style={{ padding: '24px', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="draw-stat-card" style={{ padding: '24px', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ width: '40px', height: '4px', background: categoryColor, borderRadius: '4px', marginBottom: '16px' }} />
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>6-Month {activeCategory} Avg</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1E293B', lineHeight: 1 }}>{avgScore}</div>
@@ -117,14 +117,14 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
                 </div>
               </div>
 
-              <div style={{ padding: '24px', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <div className="draw-stat-card" style={{ padding: '24px', background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ width: '40px', height: '4px', background: categoryColor, borderRadius: '4px', marginBottom: '16px' }} />
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>{activeCategory} Range ({year})</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1E293B', lineHeight: 1 }}>{lowestScore}–{highestScore}</div>
                 <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '8px', fontWeight: 500 }}>Lowest – Highest</div>
               </div>
 
-              <div style={{ padding: '24px', background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'white' }}>
+              <div className="draw-stat-card draw-stat-card--dark" style={{ padding: '24px', background: 'linear-gradient(135deg, #1E293B 0%, #0F172A 100%)', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', alignItems: 'center', color: 'white' }}>
                 <div style={{ width: '40px', height: '4px', background: 'rgba(255,255,255,0.2)', borderRadius: '4px', marginBottom: '16px' }} />
                 <div style={{ fontSize: '0.8rem', color: '#94A3B8', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px', fontWeight: 600 }}>Total ITAs (Filter: {filter})</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1, color: '#38BDF8' }}>{totalITAs.toLocaleString()}</div>
@@ -142,14 +142,14 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
             </h2>
             <div style={{
               background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)',
-              padding: '32px 24px', overflow: 'hidden'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '220px', position: 'relative' }}>
+              padding: '32px 24px'
+            }} className="draw-chart-card">
+              <div className="draw-chart-track" style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '220px', position: 'relative' }}>
                 {chartData.map((d, i) => {
                   const range = chartMax - chartMin;
                   const height = ((d.crsScore - chartMin) / range) * 180 + 30; // Min 30px height
                   return (
-                    <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                    <div key={i} className="draw-chart-col" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                       <span style={{ fontSize: '0.75rem', fontWeight: 800, color: categoryColor }}>{d.crsScore}</span>
                       <div style={{
                         width: '100%', maxWidth: '44px', height: `${height}px`,
@@ -161,7 +161,7 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
                       />
                       <span style={{
                         fontSize: '0.65rem', color: 'var(--text-muted)', transform: 'rotate(-45deg)',
-                        whiteSpace: 'nowrap', width: '20px', textAlign: 'center', fontWeight: 500, marginTop: '4px'
+                        whiteSpace: 'nowrap', textAlign: 'center', fontWeight: 500, marginTop: '4px'
                       }}>
                         {new Date(d.date + 'T00:00:00').toLocaleDateString('en-CA', { month: 'short', day: 'numeric' })}
                       </span>
@@ -170,7 +170,8 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
                 })}
               </div>
               <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '24px', textAlign: 'center', fontWeight: 500 }}>
-                Last 12 {categoryLabel} draws
+                Last {chartData.length} {categoryLabel} draws
+                <span className="draw-chart-hint"> · swipe to see all →</span>
               </p>
             </div>
           </section>
@@ -227,7 +228,7 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
               background: 'white', borderRadius: '12px', border: '1px solid var(--border-color)',
               overflowX: 'auto', overflowY: 'hidden', WebkitOverflowScrolling: 'touch'
             }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+              <table className="draw-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
                 <thead>
                   <tr style={{ background: '#F8FAFC', borderBottom: '2px solid var(--border-color)' }}>
                     <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600, color: 'var(--text-muted)', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Date</th>

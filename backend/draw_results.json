@@ -1,5 +1,18 @@
 [
   {
+    "date": "2026-08-18",
+    "drawType": "CEC",
+    "crsScore": 523,
+    "itasIssued": 1000,
+    "notes": "Highest CEC cut-off of 2026 and its smallest CEC round."
+  },
+  {
+    "date": "2026-08-17",
+    "drawType": "PNP",
+    "crsScore": 760,
+    "itasIssued": 442
+  },
+  {
     "date": "2026-08-07",
     "drawType": "Transport",
     "crsScore": 470,

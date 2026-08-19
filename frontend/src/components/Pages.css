@@ -933,3 +933,48 @@
     font-size: 3.5rem;
   }
 }
+
+/* ── Draw Results page — mobile ─────────────────────────────────────────────
+   The CRS trend chart packs 12 bars into a flex row. On a phone that squeezed
+   each bar to ~19px, so the score labels and rotated dates collided (unreadable).
+   Fix: give every column a real minimum width and let the track scroll sideways.
+   On desktop the columns still flex-grow to fill, so nothing changes there. */
+.draw-chart-col {
+  flex: 1 0 auto;
+  min-width: 46px;
+}
+.draw-chart-track {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: 4px;
+}
+.draw-chart-hint { display: none; }   /* only meaningful when the track scrolls */
+
+@media (max-width: 768px) {
+  .draw-chart-card { padding: 20px 12px !important; }
+  .draw-chart-hint { display: inline; }
+
+  /* Stat tiles: 2-up instead of 1-up, with tighter type so numbers fit */
+  .draw-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+  .draw-stat-card { padding: 16px 10px !important; border-radius: 12px !important; }
+  .draw-stat-card > div:nth-child(2) { font-size: 0.68rem !important; letter-spacing: 0.3px !important; }
+  .draw-stat-card > div:nth-child(3) { font-size: 1.75rem !important; }
+  .draw-stat-card > div:nth-child(4) { font-size: 0.72rem !important; text-align: center; }
+
+  /* Table: reclaim horizontal space so it fits without sideways scrolling */
+  .draw-table { font-size: 0.82rem !important; }
+  .draw-table th, .draw-table td { padding: 10px 8px !important; }
+}
+
+@media (max-width: 380px) {
+  .draw-stat-grid { grid-template-columns: 1fr !important; }
+  .draw-chart-col { min-width: 42px; }
+  /* Squeeze the last few px so the table fits a 360-375px screen without scrolling */
+  .draw-table { font-size: 0.78rem !important; }
+  .draw-table th, .draw-table td { padding: 9px 6px !important; }
+}
