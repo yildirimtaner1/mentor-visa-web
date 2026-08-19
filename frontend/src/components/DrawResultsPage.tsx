@@ -58,6 +58,10 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
       .reverse();
   }, [activeCategory]);
 
+  // Plot-area geometry: bars are drawn inside BAR_AREA px so the label above them always has room.
+  const BAR_AREA = 170;
+  const BAR_MIN = 26;
+
   const chartMax = useMemo(() => Math.max(...chartData.map(d => d.crsScore)) + 10, [chartData]);
   const chartMin = useMemo(() => Math.min(...chartData.map(d => d.crsScore)) - 10, [chartData]);
 
@@ -144,24 +148,31 @@ export const DrawResultsPage: FC<{ onNavigate: (v: string) => void }> = () => {
               background: 'white', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.05)',
               padding: '32px 24px'
             }} className="draw-chart-card">
-              <div className="draw-chart-track" style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', height: '220px', position: 'relative' }}>
+              <div className="draw-chart-track" style={{ display: 'flex', alignItems: 'flex-end', gap: '6px', position: 'relative' }}>
                 {chartData.map((d, i) => {
                   const range = chartMax - chartMin;
-                  const height = ((d.crsScore - chartMin) / range) * 180 + 30; // Min 30px height
+                  // The bar lives inside a FIXED-height plot area, so a tall bar can never push the
+                  // score label out of the (scroll-clipped) track — that was cutting off the numbers
+                  // on the highest draws.
+                  const height = ((d.crsScore - chartMin) / range) * (BAR_AREA - BAR_MIN) + BAR_MIN;
                   return (
-                    <div key={i} className="draw-chart-col" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontSize: '0.75rem', fontWeight: 800, color: categoryColor }}>{d.crsScore}</span>
-                      <div style={{
-                        width: '100%', maxWidth: '44px', height: `${height}px`,
-                        background: `linear-gradient(180deg, ${categoryColor}, ${categoryColor}99)`,
-                        borderRadius: '6px 6px 0 0', transition: 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                        cursor: 'pointer', position: 'relative', boxShadow: '0 -2px 10px rgba(0,0,0,0.05)'
-                      }}
-                        title={`${formatDate(d.date)}: CRS ${d.crsScore}`}
-                      />
-                      <span style={{
+                    <div key={i} className="draw-chart-col" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+                      <span style={{ fontSize: '0.75rem', fontWeight: 800, color: categoryColor, lineHeight: 1.2 }}>{d.crsScore}</span>
+                      <div style={{ height: `${BAR_AREA}px`, width: '100%', display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+                        <div style={{
+                          width: '100%', maxWidth: '44px', height: `${height}px`,
+                          background: `linear-gradient(180deg, ${categoryColor}, ${categoryColor}99)`,
+                          borderRadius: '6px 6px 0 0', transition: 'height 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                          cursor: 'pointer', position: 'relative', boxShadow: '0 -2px 10px rgba(0,0,0,0.05)'
+                        }}
+                          title={`${formatDate(d.date)}: CRS ${d.crsScore}`}
+                        />
+                      </div>
+                      {/* Rotating the text does not change its layout box, so the row needs explicit
+                          height for the diagonal label to sit inside the track without being clipped. */}
+                      <span className="draw-chart-date" style={{
                         fontSize: '0.65rem', color: 'var(--text-muted)', transform: 'rotate(-45deg)',
-                        whiteSpace: 'nowrap', textAlign: 'center', fontWeight: 500, marginTop: '4px'
+                        whiteSpace: 'nowrap', fontWeight: 500
                       }}>
                         {new Date(d.date + 'T00:00:00').toLocaleDateString('en-CA', { month: 'short', day: 'numeric' })}
                       </span>

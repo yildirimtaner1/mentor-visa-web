@@ -952,6 +952,16 @@
 }
 .draw-chart-hint { display: none; }   /* only meaningful when the track scrolls */
 
+/* A rotated element keeps its unrotated layout box, so the diagonal date needs its own
+   reserved height — otherwise it spills past the scroll container and gets clipped. */
+.draw-chart-date {
+  display: block;
+  height: 34px;
+  line-height: 1;
+  transform-origin: center top;
+  margin-top: 2px;
+}
+
 @media (max-width: 768px) {
   .draw-chart-card { padding: 20px 12px !important; }
   .draw-chart-hint { display: inline; }
