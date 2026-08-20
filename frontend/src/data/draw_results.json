@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-08-19",
+    "drawType": "French",
+    "crsScore": 382,
+    "itasIssued": 5000,
+    "notes": "Lowest French-language cut-off of 2026 — down 9 points from the Aug 6 round."
+  },
+  {
     "date": "2026-08-18",
     "drawType": "CEC",
     "crsScore": 523,
@@ -24,7 +31,7 @@
     "drawType": "French",
     "crsScore": 391,
     "itasIssued": 5000,
-    "notes": "Lowest French-language cut-off of 2026."
+    "notes": "French cut-off dipped to 391, then fell again on Aug 19."
   },
   {
     "date": "2026-08-05",
