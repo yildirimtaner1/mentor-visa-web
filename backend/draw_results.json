@@ -1,5 +1,29 @@
 [
   {
+    "date": "2026-09-04",
+    "drawType": "Healthcare",
+    "crsScore": 475,
+    "itasIssued": 3500
+  },
+  {
+    "date": "2026-09-03",
+    "drawType": "Physicians",
+    "crsScore": 198,
+    "itasIssued": 229
+  },
+  {
+    "date": "2026-09-01",
+    "drawType": "CEC",
+    "crsScore": 521,
+    "itasIssued": 2000
+  },
+  {
+    "date": "2026-08-31",
+    "drawType": "PNP",
+    "crsScore": 697,
+    "itasIssued": 562
+  },
+  {
     "date": "2026-08-19",
     "drawType": "French",
     "crsScore": 382,
