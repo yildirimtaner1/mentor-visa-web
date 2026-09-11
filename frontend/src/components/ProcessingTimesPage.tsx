@@ -104,7 +104,7 @@ const JOURNEY_ROWS: { key: string; label: string }[] = [
   { key: 'aor_to_meds', label: 'Medical' },
   { key: 'aor_to_decision', label: 'Final Decision' },
   { key: 'aor_to_p1', label: 'P1 (inland)' },
-  { key: 'aor_to_ppr', label: 'P1 / PPR' },
+  { key: 'aor_to_ppr', label: 'P2 / PPR' },
   { key: 'aor_to_ecopr', label: 'eCOPR' },
 ];
 const JOURNEY_TABS = ['All', ...STREAMS];
@@ -194,7 +194,7 @@ const SNAP_ROWS: { key: string; label: string; final?: boolean }[] = [
   { key: 'medical', label: 'Medical' },
   { key: 'bg_check', label: 'BG Check' },
   { key: 'decision', label: 'Final Decision' },
-  { key: 'p1_ppr', label: 'P1/PPR' },
+  { key: 'p1_ppr', label: 'Portal / PPR' },
   { key: 'ecopr', label: 'eCOPR/COPR', final: true },
 ];
 
