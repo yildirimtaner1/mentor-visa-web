@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-09-16",
+    "drawType": "Senior Managers",
+    "crsScore": 389,
+    "itasIssued": 250,
+    "notes": "Lowest Senior Managers cut-off on record - 3 points below the July 10 round."
+  },
+  {
+    "date": "2026-09-15",
+    "drawType": "CEC",
+    "crsScore": 519,
+    "itasIssued": 2000
+  },
+  {
+    "date": "2026-09-14",
+    "drawType": "PNP",
+    "crsScore": 734,
+    "itasIssued": 576,
+    "notes": "PNP cut-off jumped 37 points from the Aug 31 round."
+  },
+  {
     "date": "2026-09-04",
     "drawType": "Healthcare",
     "crsScore": 475,
