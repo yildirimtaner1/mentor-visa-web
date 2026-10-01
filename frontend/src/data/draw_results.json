@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-09-29",
+    "drawType": "CEC",
+    "crsScore": 518,
+    "itasIssued": 2000,
+    "notes": "Third straight CEC decline - 521 (Sep 1) to 519 (Sep 15) to 518."
+  },
+  {
+    "date": "2026-09-28",
+    "drawType": "PNP",
+    "crsScore": 725,
+    "itasIssued": 733,
+    "notes": "PNP cut-off eased 9 points from the Sep 14 round."
+  },
+  {
     "date": "2026-09-16",
     "drawType": "Senior Managers",
     "crsScore": 389,
