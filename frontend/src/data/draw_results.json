@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-01",
+    "drawType": "Trades",
+    "crsScore": 476,
+    "itasIssued": 3500,
+    "notes": "Largest Trades round yet - 500 more ITAs than April 2 and one point lower."
+  },
+  {
     "date": "2026-09-29",
     "drawType": "CEC",
     "crsScore": 518,
