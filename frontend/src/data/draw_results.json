@@ -1,5 +1,26 @@
 [
   {
+    "date": "2026-10-16",
+    "drawType": "French",
+    "crsScore": 435,
+    "itasIssued": 5000,
+    "notes": "Highest French-language cut-off of 2026 - an eight-week gap since Aug 19 pushed it 15 points above the previous high of 420."
+  },
+  {
+    "date": "2026-10-15",
+    "drawType": "CEC",
+    "crsScore": 519,
+    "itasIssued": 2500,
+    "notes": "Largest CEC round since the spring - 500 more ITAs than recent rounds."
+  },
+  {
+    "date": "2026-10-13",
+    "drawType": "PNP",
+    "crsScore": 772,
+    "itasIssued": 752,
+    "notes": "PNP cut-off climbed 47 points from the Sep 28 round."
+  },
+  {
     "date": "2026-10-01",
     "drawType": "Trades",
     "crsScore": 476,
